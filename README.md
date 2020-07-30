@@ -3,6 +3,7 @@
 GitFlow da Seção de Informática da FDRP.
 
 >## Criando um repositório
+
 ### GitHub
 - Criar o repositório com nome e descrição que façam sentido
 - Gerar o arquivo README.md na criação do repo
@@ -33,6 +34,7 @@ Colocar o nome do branch e marcar opção `Require pull request reviews before m
 <br>
 
 >## Contribuindo com um projeto
+
 ### GitHub
 - Criar issue, se não exisitir
 
@@ -70,7 +72,7 @@ Se o deploy para o servidor de homologação tiver dado certo:
 
 >## Criando um Hotfix
 
-**Máquina Local**
+### Máquina Local
 - Clonar o repositório, se não tiver:
   - `git clone git@repoaddress/repo.git`
   - `cd repo/`
