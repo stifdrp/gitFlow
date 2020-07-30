@@ -1,83 +1,100 @@
 # GitFlow TIFDRP
 
-## Criar um repositório
+GitFlow da Seção de Informática da FDRP.
 
-**GitHub**
+>## Criando um repositório
+### GitHub
+- Criar o repositório com nome e descrição que façam sentido
+- Gerar o arquivo README.md na criação do repo
 
-- Criar o repositório
-
-**Máquina Local**
-
+### Máquina Local
 - Clonar o repositório:
   - `git clone git@repoaddress/repo.git`
   - `cd repo/`
-- Criar um branch chamado develop:
-  - `git checkout -b develop`
-- Mandar o branch develop para o remoto:
-  - `git push origin develop`
-- Trackear o branch develop local o com develop remoto:
-  - `git branch --set-upstream-to=origin/develop`
-  
+- Criar um branch chamado homologacao:
+  - `git checkout -b homologacao`
+- Mandar o branch homologacao para o remoto:
+  - `git push origin homologacao`
+- Trackear o branch develop local o com homologacao remoto:
+  - `git branch --set-upstream-to=origin/homologacao`
+
+### GitHub
+- Alterar o branch default para homologacao `Repositório > Settings > Branches`
+- Proteger as branches públicas `Repositório > Settings > Branches`
+
+Clicar em Add Rule
+
+![Branch protection rules](images/rules-branches-1.png "Branch protection rules")
+
+Colocar o nome do branch e marcar opção `Require pull request reviews before merging`
+
+![Branch protection rules](images/rules-branches-2.png)
+ 
 <br>
 
-## Nova Funcionalidade
+>## Contribuindo com um projeto
+### GitHub
+- Criar issue, se não exisitir
 
-**GitHub**
-
-- Criar issue
-
-**Máquina Local**
-
+### Máquina Local
 - Clonar o repositório, se não tiver:
   - `git clone git@repoaddress/repo.git`
   - `cd repo/`
-- Entrar no branch master e atualizá-lo:
-  - `git checkout master`
+- Entrar no branch homologacao e atualizá-lo:
+  - `git checkout homologacao`
   - `git pull`
-- Entrar no develop e atualizá-lo:
-  - `git checkout develop`
-  - `git pull`
-- Criar um branch novo a partir do branch develop para resolver a issue:
-  - `git checkout -b issue-issueid`
-- Criar a nova funcionalidade.
+- Criar um branch de desenvolvimento a partir do branch homologacao para resolver a issue:
+  - `git checkout -b nome-do-branch`
+- Criar os códigos que resolvam a issue.
 - Commit das alterações:
-  - `git add .`
+  - `git add arquivos-alterados` ou `git add .`
   - `git commit -m "msg do commit resolve #issueid`
-- Merge do branch da issue para develop:
-  - `git checkout develop`
-  - `git merge --no-ff issue-issueid`
-- Mandar o branch develop pro remoto:
-  - `git push origin develop`
-- Conferir o servidor de homologação.
+- Mandar o branch de desenvolvimento para o GitHub
+  - `git push origin nome-do-branch`
 
-**GitHub**
+### GitHub
+- Abrir um PullRequest para o branch homologacao
+- Se possível, pedir para alguém revisar o código para aceitar o PullRequest no branch homologacao
+- Conferir se o deploy foi feito no servidor de homologação
 
-- Entrar no branch develop.
-- Fazer Pull Request para master.
-- Se possível, pedir para alguém revisar o código.
-- Se estiver tudo ok com o código fazer um merge da PR para master.
-- Conferir o servidor de produção.
+### Maquina Local
+
+Se o deploy para o servidor de homologação tiver dado certo:
+- Entrar no branch homologacao e atualizá-lo:
+  - `git checkout homologacao`
+  - `git pull`
+- Remover o branch de desenvolvimento
+  - `git branch -d nome-do-branch`
 
 <br>
 
-## Hotfix
+>## Criando um Hotfix
 
 **Máquina Local**
-
 - Clonar o repositório, se não tiver:
   - `git clone git@repoaddress/repo.git`
   - `cd repo/`
 - Entrar no branch master e atualizá-lo:
   - `git checkout master`
   - `git pull`
-- Criar um branch novo a partir do master para reolver o hotfix:
-  - `git checkout -b hotfix-keyword`
+- Criar um branch de hotfix a partir do master para reolver o problema:
+  - `git checkout -b nome-do-branch`
+- Criar os códigos que resolvam o problema.
 - Commit das alterações:
-  - `git add .`
+  - `git add arquivos-alterados` ou `git add .`
   - `git commit -m "msg do commit"`
-- Merge do branch do hotfix para master:
+- Mandar o branch do hotfix para o GitHub:
+  - `git push origin nome-do-branch`
+
+### GitHub
+- Abrir um PullRequest para o branch master
+- Se possível, pedir para alguém revisar o código para aceitar o PullRequest no branch master
+- Conferir se o deploy foi feito no servidor de produção
+
+### Maquina Local
+Se o deploy para o servidor de produção tiver dado certo:
+- Entrar no branch master e atualizá-lo:
   - `git checkout master`
-  - `git merge --no-ff hotfix-keyword`
-- Mandar o branch master pro remoto:
-  - `git push origin master`
-- Conferir o servidor de produção
+  - `git pull`
+- Remover o branch de hotfix
+  - `git branch -d nome-do-branch`
